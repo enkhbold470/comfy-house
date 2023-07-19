@@ -21,6 +21,20 @@ let cart = [];
 // buttons
 let buttonsDOM = [];
 
+// menu navigation functions
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+// end of menu
+
 //getting the products
 class Products {
   async getProducts() {
@@ -63,11 +77,11 @@ class UI {
      />
      <button class="bag-btn" data-id=${product.id}>
       <i class="fas fa-shopping-cart"></i>
-      add to cart
+      Сагслах
      </button>
     </div>
     <h3>${product.title}</h3>
-    <h4>₮ ${product.price.toLocaleString("en-US")}</h4>
+    <h2>₮ ${product.price.toLocaleString("en-US")}</h2>
    </article>
       `;
     });
@@ -80,11 +94,11 @@ class UI {
       let id = button.dataset.id;
       let inCart = cart.find((item) => item.id === id);
       if (inCart) {
-        button.innerText = "In Cart";
+        button.innerText = "Сагсласан";
         button.disabled = true;
       }
       button.addEventListener("click", (event) => {
-        event.target.innerText = "In Cart";
+        event.target.innerText = "Сагсласан";
         event.target.disabled = true;
         // get product from products
         let cartItem = { ...Storage.getProduct(id), amount: 1 };
@@ -123,7 +137,7 @@ class UI {
     <div>
      <h4>${item.title}</h4>
      <h5>₮ ${item.price.toLocaleString("en-US")}</h5>
-     <span class="remove-item" data-id =${item.id}>remove</span>
+     <span class="remove-item" data-id =${item.id}>устгах</span>
     </div>
     <div>
      <i class="fas fa-chevron-up" data-id=${item.id}></i>
